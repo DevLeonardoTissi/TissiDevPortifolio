@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/projects');
 });
 
 Route::get('/hello', function () {
     return view('helloWord');
 });
 
-Route::resource('/project', ProjectsController::class)
+Route::resource('/projects', ProjectsController::class)
     ->except('show');
