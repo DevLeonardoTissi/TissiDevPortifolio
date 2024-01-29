@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', function () {
-   return view('helloWord');
+    return view('helloWord');
 });
+
+Route::resource('/project', ProjectsController::class)
+    ->except('show');
