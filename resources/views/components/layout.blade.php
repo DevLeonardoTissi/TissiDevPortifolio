@@ -10,7 +10,39 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
 </head>
-<body>
- {{$slot}}
+<body class="">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand " href="{{route('projects.index')}}">Home</a>
+
+        @auth <a href="">Sair</a> @endauth
+        @guest <a href="">Entrar</a> @endguest
+
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>{{$title}}</h1>
+
+    @isset($successMessage)
+        <div class="alert alert-success">
+            {{$successMessage}}
+        </div>
+    @endisset
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    {{$slot}}
+</div>
 </body>
 </html>
