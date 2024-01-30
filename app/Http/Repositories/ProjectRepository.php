@@ -2,14 +2,16 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Collection;
 
 interface ProjectRepository
 {
 
-    public function add(int $projectId): Project;
+    public function add(ProjectFormRequest $request): Project;
 
-    public function all();
+    public function all(): Collection;
 
     public function update();
 

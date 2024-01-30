@@ -2,18 +2,22 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Collection;
 
 class EloquentProjectRepository implements ProjectRepository
 {
 
-    public function add(int $projectId): Project
+    public function add(ProjectFormRequest $request): Project
     {
-        return new Project();
+
+        return Project::create($request->all());
     }
 
-    public function all()
+    public function all(): Collection
     {
+       return Project::all();
     }
 
     public function update()

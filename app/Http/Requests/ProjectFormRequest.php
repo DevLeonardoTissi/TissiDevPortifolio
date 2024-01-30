@@ -2,32 +2,37 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProjectFormRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'min:10'],
+            'url' => ['required', 'url']
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
-        
+        return [
+            'name.required' => 'Campo nome obrigatório',
+            'name.min' => 'O nome precisa ter pelo menos 10 caracteres',
+            'url' => 'Campo URL obrigatório',
+            'url.url' => 'Campo URL precisa ser uma URL válida'
+            ];
     }
 }
