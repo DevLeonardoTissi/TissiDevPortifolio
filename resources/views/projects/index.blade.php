@@ -16,6 +16,14 @@
                     <div class="card-body">
                         <a href="{{$project->url}}" class="card-link">Link do projeto</a>
                     </div>
+                    <div class="card-body border-top d-flex justify-content-center">
+                        <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-primary m-2">Editar</a>
+                        <form action="{{ route('projects.destroy', $project->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger m-2">Excluir</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 

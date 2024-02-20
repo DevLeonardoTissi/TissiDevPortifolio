@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Repositories\ProjectRepository;
 use App\Http\Requests\ProjectFormRequest;
+use App\Models\Project;
 
 class ProjectsController extends Controller
 {
@@ -33,14 +34,24 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
-
-    public function update()
+    public function edit(Project $project)
     {
+        return view('projects.edit')->with('project', $project);
+    }
+
+    public function update(Project $project, ProjectFormRequest $request)
+    {
+        $this->projectRepository->update($project, $request);
+        return to_route('projects.index')
+            ->with('successMessage', "Projeto '$project->name' alterado com sucesso");
 
     }
 
-    public function destroy()
+    public function destroy(Project $project)
     {
+        $this->projectRepository->destroy($project);
+        return to_route('projects.index')
+            ->with('successMessage', "Projeto '$project->name' deletado com sucesso");
 
     }
 

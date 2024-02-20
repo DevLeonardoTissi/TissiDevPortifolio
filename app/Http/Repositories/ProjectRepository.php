@@ -13,8 +13,8 @@ interface ProjectRepository
 
     public function all(): Collection;
 
-    public function update();
+    public function update(Project $project,  ProjectFormRequest $request);
 
-    public function destroy(int $projectId);
+    public function destroy(Project $projectId);
 
 }

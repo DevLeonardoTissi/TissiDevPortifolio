@@ -20,12 +20,15 @@ class EloquentProjectRepository implements ProjectRepository
        return Project::all();
     }
 
-    public function update()
+    public function update(Project $project, ProjectFormRequest $request)
     {
+        $project->fill($request->all());
+        $project->save();
+
     }
 
-    public function destroy(int $projectId)
+    public function destroy(Project $projectId)
     {
-
+        $projectId->delete();
     }
 }
