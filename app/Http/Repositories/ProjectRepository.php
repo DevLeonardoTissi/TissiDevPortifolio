@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface ProjectRepository
 {
-
     public function add(ProjectFormRequest $request): Project;
 
     public function all(): Collection;

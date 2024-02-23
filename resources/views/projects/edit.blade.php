@@ -43,18 +43,7 @@
             <label for="url" class="form-label">Url do projeto</label>
         </div>
 
-
-        <div class="row mb-3">
-            <div class="col-12">
-                <label for="img" class="form-label">Imagem</label>
-                <input type="file"
-                       id="img"
-                       name="img"
-                       class="form-control"
-                       accept="image/gif, image/jpeg, image/png">
-            </div>
-        </div>
-
         <button type="submit" class="btn btn-primary">Editar</button>
     </form>
+
 </x-layout>

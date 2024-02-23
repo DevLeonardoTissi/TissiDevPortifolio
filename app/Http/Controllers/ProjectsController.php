@@ -24,7 +24,12 @@ class ProjectsController extends Controller
 
     public function store(ProjectFormRequest $request)
     {
+
+        $cover_path = $request->file('img')?->store('project_img', 'public');
+        $request->img = $cover_path;
+
         $project = $this->projectRepository->add($request);
+
         return to_route('projects.index')
             ->with('successMessage', "Projeto '$project->name' adicionado com sucesso");
     }

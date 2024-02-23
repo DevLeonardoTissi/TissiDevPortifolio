@@ -5,7 +5,7 @@
 
             <div class="col-md-4 mb-4">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{asset('storage/' . $project->img)}}" class="card-img-top" style=" max-height: 200px; max-width: 100%;" alt="project image">
                     <div class="card-body">
                         <h5 class="card-title">{{$project->name}}</h5>
                         <p class="card-text">{{$project->description}}.</p>
