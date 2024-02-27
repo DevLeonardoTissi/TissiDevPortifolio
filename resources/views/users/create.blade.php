@@ -1,0 +1,41 @@
+<x-layout title="Criar conta">
+    <form method="post">
+        @csrf
+
+        <div class="col-12 form-floating mb-3">
+            <input type="text"
+                   autofocus
+                   class="form-control"
+                   id="name"
+                   name="name"
+                   placeholder="Digite seu nome"
+                   value="{{old('name')}}">
+            <label for="name" class="form-label">Digite seu Nome</label>
+        </div>
+
+        <div class="col-12 form-floating mb-3">
+            <input type="email"
+                   autofocus
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   placeholder="Digite seu email"
+                   value="{{old('email')}}">
+            <label for="email" class="form-label">Digite seu email</label>
+        </div>
+
+        <div class="col-12 form-floating mb-3 mt-3">
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   name="password"
+                   placeholder="Crie senha"
+                   value="{{old('password')}}">
+            <label for="password" class="form-label">Crie sua senha</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+
+
+    </form>
+</x-layout>

@@ -16,8 +16,13 @@
 
         <a class="navbar-brand " href="{{route('projects.index')}}">Home</a>
 
-        @auth <a href="">Sair</a> @endauth
-        @guest <a href="">Entrar</a> @endguest
+        @auth
+            <a href="{{route('logout')}}">Sair</a>
+            <a href="{{route('users.destroy')}}">Excluir conta</a>
+        @endauth
+        @guest
+            <a href="{{route('login')}}">Entrar</a>
+        @endguest
 
 
     </div>
