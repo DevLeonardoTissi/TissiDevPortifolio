@@ -1,9 +1,8 @@
-<x-layout title="Adicionar">
+<x-layout title="Adicionar projeto">
     <form action="{{ route('projects.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
-
-        <div class="col-12 form-floating mb-3">
+        <div class="col-12 form-floating mb-3 mt-5">
             <input type="text"
                    autofocus
                    class="form-control"
@@ -53,6 +52,10 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Criar</button>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success">Adicionar projeto</button>
+        </div>
+
+
     </form>
 </x-layout>

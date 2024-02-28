@@ -4,7 +4,7 @@
         @csrf
         @method('PUT')
 
-        <div class="col-12 form-floating mb-3">
+        <div class="col-12 form-floating mt-5">
             <input type="text"
                    autofocus
                    class="form-control"

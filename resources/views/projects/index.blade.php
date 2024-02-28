@@ -1,26 +1,28 @@
-<x-layout title="Projects" :successMessage="$successMessage">
+<x-layout title="Projetos" :successMessage="$successMessage">
+
     @auth()
-    <a href="{{ route('projects.create') }}" class="btn btn-dark mb-2">Adicionar novo projeto</a>
+        <a href="{{ route('projects.create') }}" class="btn btn-dark mb-2">Adicionar novo projeto</a>
     @endauth
 
-    <div class="row mt-4">
+    <div class="row mt-5">
         @foreach($projects as $project)
-            <div class="col-md-4 mb-4">
-                <div class="card">
+            <div class="col-md-3 mb-4 ">
+                <div class="elevate card shadow">
                     @isset($project->img)
                         <img src="{{ asset('storage/' . $project->img) }}" class="card-img-top"
                              style="max-height: 200px; max-width: 100%;" alt="project image">
                     @endisset
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ $project->name }}</h5>
+                        <h3 class="card-title">{{ $project->name }}</h3>
                         <p class="card-text">{{ $project->description }}.</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{ $project->technologies }}</li>
+                        <li class="list-group-item ">{{ str_replace(' ', ' - ', $project->technologies) }}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="{{ $project->url }}" class="card-link">Link do projeto</a>
+                        <a href="{{ $project->url }}" class="card-link link-underline link-underline-opacity-0">Link do
+                            projeto</a>
                     </div>
 
                     @auth()
@@ -39,3 +41,4 @@
 
     </div>
 </x-layout>
+

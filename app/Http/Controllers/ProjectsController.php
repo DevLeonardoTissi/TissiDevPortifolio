@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Repositories\ProjectRepository;
 use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 
 class ProjectsController extends Controller
 {
 
-    public function __construct(private ProjectRepository $projectRepository)
+    public function __construct(private readonly ProjectRepository $projectRepository)
     {
     }
 
-    public function index()
+    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $successMessage = session('successMessage');
         $projects = $this->projectRepository->all();
@@ -22,7 +26,7 @@ class ProjectsController extends Controller
             ->with('successMessage', $successMessage);
     }
 
-    public function store(ProjectFormRequest $request)
+    public function store(ProjectFormRequest $request): RedirectResponse
     {
 
         $cover_path = $request->file('img')?->store('project_img', 'public');
@@ -34,17 +38,17 @@ class ProjectsController extends Controller
             ->with('successMessage', "Projeto '$project->name' adicionado com sucesso");
     }
 
-    public function create()
+    public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('projects.create');
     }
 
-    public function edit(Project $project)
+    public function edit(Project $project): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('projects.edit')->with('project', $project);
     }
 
-    public function update(Project $project, ProjectFormRequest $request)
+    public function update(Project $project, ProjectFormRequest $request): RedirectResponse
     {
         $this->projectRepository->update($project, $request);
         return to_route('projects.index')
@@ -52,7 +56,7 @@ class ProjectsController extends Controller
 
     }
 
-    public function destroy(Project $project)
+    public function destroy(Project $project): RedirectResponse
     {
         $this->projectRepository->destroy($project);
         return to_route('projects.index')

@@ -1,0 +1,9 @@
+.elevate:hover  {
+    transform: scale(1.01,1.01) translateY(-10px);
+    transition: 0.2s;
+}
+
+.elevate-raise:hover  {
+    transform: scale(1.01,1.01) translateY(-3px);
+    transition: 0.2s;
+}
