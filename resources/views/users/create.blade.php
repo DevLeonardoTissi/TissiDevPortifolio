@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-12 form-floating mb-3">
-            <input type="email"
+            <input type="text"
                    autofocus
                    class="form-control"
                    id="email"

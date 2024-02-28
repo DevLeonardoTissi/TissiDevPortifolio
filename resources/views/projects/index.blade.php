@@ -6,7 +6,7 @@
 
     <div class="row mt-5">
         @foreach($projects as $project)
-            <div class="col-md-3 mb-4 ">
+            <div class="col-md-3 mb-2 ">
                 <div class="elevate card shadow">
                     @isset($project->img)
                         <img src="{{ asset('storage/' . $project->img) }}" class="card-img-top"

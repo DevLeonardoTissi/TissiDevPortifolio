@@ -29,9 +29,9 @@ class ProjectFormRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Campo nome obrigatório',
+            'name.required' => 'Nome do projeto obrigatório',
             'name.min' => 'O nome precisa ter pelo menos 10 caracteres',
-            'url' => 'Campo URL obrigatório',
+            'url.required' => 'Campo URL obrigatório',
             'url.url' => 'Campo URL precisa ser uma URL válida'
             ];
     }

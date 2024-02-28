@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginFormRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -13,7 +13,7 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(LoginFormRequest $request): RedirectResponse
     {
         if (!Auth::attempt($request->only(['email', 'password']))) {
             return redirect()->back()->withErrors('Usuário ou senha inválidos');

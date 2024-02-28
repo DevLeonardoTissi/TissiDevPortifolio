@@ -6,12 +6,18 @@ use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class EloquentProjectRepository implements ProjectRepository
 {
 
     public function add(ProjectFormRequest $request): Project
     {
+
+        $cover_path = $request->file('img')?->store('project_img', 'public');
+        $request->img = $cover_path;
+
+
         return DB::transaction(function () use ($request) {
             $project = Project::create([
                 'name' => $request->name,
@@ -31,14 +37,18 @@ class EloquentProjectRepository implements ProjectRepository
         return Project::all();
     }
 
-    public function update(Project $project, ProjectFormRequest $request)
+    public function update(Project $project, ProjectFormRequest $request): void
     {
         $project->fill($request->all());
         $project->save();
     }
 
-    public function destroy(Project $projectId)
+    public function destroy(Project $project): void
     {
-        $projectId->delete();
+        if ($project->img != null) {
+            Storage::disk('public')->delete([$project->img]);
+        }
+
+        $project->delete();
     }
 }

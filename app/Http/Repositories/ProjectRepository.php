@@ -12,8 +12,8 @@ interface ProjectRepository
 
     public function all(): Collection;
 
-    public function update(Project $project,  ProjectFormRequest $request);
+    public function update(Project $project, ProjectFormRequest $request);
 
-    public function destroy(Project $projectId);
+    public function destroy(Project $project);
 
 }

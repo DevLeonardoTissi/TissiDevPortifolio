@@ -19,7 +19,9 @@
         <div class="col-12 form-floating mb-3 mt-3">
             <textarea name="description" class="form-control" placeholder="Descrição" id="description"
                       style="height: 100px"
-            >@isset($project->description){{$project->description}}@endisset</textarea>
+            >@isset($project->description)
+                    {{$project->description}}
+                @endisset</textarea>
             <label for="description">Descrição</label>
         </div>
 

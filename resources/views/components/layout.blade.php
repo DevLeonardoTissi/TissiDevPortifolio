@@ -8,7 +8,6 @@
     <title>{{$title}} | TissiDevPortifolio</title>
     @vite(['resources/sass/app.scss','resources/js/app.js'])
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
 </head>
 <body>
 <div class="d-block px-3 py-2 text-center text-bold skippy bg-body-tertiary">
@@ -52,7 +51,7 @@
 </header>
 
 
-<div class="container mt-4 mb-5">
+<div class="container mt-4 mb-5 " style="min-height: 100vh">
     <h1>{{$title}}</h1>
 
     @isset($successMessage)
@@ -85,7 +84,7 @@
     {{$slot}}
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-0">
     <div class="container-fluid">
 
         <div>
