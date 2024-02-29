@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use App\Events\ProjectDeleted;
 use App\Http\Requests\ProjectFormRequest;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Collection;
@@ -46,7 +47,7 @@ class EloquentProjectRepository implements ProjectRepository
     public function destroy(Project $project): void
     {
         if ($project->img != null) {
-            Storage::disk('public')->delete([$project->img]);
+            ProjectDeleted::dispatch($project->img);
         }
 
         $project->delete();

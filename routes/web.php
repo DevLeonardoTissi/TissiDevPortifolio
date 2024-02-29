@@ -17,12 +17,13 @@ Route::middleware(Authenticator::class)->group(function (){
 
     Route::get('unregister', [UsersController::class, 'destroy'])->name('users.destroy');
 
+    Route::resource('/projects', ProjectsController::class)
+        ->except('show');
 
 });
 
+Route::get('/projects', [ProjectsController::class, 'index'])->name('projects.index');
 
-Route::resource('/projects', ProjectsController::class)
-    ->except('show');
 
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('/login', [LoginController::class,'store'])->name('sigin');
