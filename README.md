@@ -11,7 +11,7 @@
 
 ⭐ Esse é um projeto para demonstrar meu conhecimento técnico no desenvolvimento web com a linguagem PHP utilizando o framework Laravel.
 
-A aplicação consiste em um Crud Simples e algumas funcionalidades extras como sistema de autenticação, validação de formulários e etc.
+A aplicação consiste em um CRUD Simples e algumas funcionalidades extras como sistema de autenticação, validação de formulários, update de arquivos e etc.
 </p>
 
 
